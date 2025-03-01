@@ -1,0 +1,38 @@
+By: Aaron Hunter
+                Understanding an HTTP Server through C++
+------------------------------------------------------------------------------------------------------------------------------
+INTRODUCTION
+      I. - Abstract
+     II. - What is a Server
+    III. - What is a Socket (Windows vs Unix)
+     IV. - How HTTP Works
+      V. - Prerequisites & Setup
+------------------------------------------------------------------------------------------------------------------------------
+
+I. Abstract 
+
+This paper is titled Understanding an HTTP Server through C++ and quite literally I aim to do just that, and what "that" is,
+is to achieve three separate but related goals. The first being that I seek to deepen my software engineering skils through
+designing a scalable and modular HTTP server, hopefully gaining an understanding of backend development and network programming. 
+Second, I intend to provide a well-structured guide or tutorial that effectively conveys the fundamental concepts and 
+implementation details of this project, making it accessible to others interested in learning.
+Finally, this project will serve as a proof of concept—a demonstration of both technical skill and practical 
+application—potentially contributing to future opportunities for gainful employment in software development.
+
+
+II. What is a Server
+
+
+
+III. WHat is a Socket
+
+
+
+IV. How HTTP Works
+
+
+
+V. Prerequisites & Setup
+
+
+-----------------------------------------------------------------------------------------------------------------------------

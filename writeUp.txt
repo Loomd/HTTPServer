@@ -1,5 +1,5 @@
 By: Aaron Hunter
-                Understanding an HTTP Server through C++
+                                    Understanding an HTTP Server through C++
 ------------------------------------------------------------------------------------------------------------------------------
 INTRODUCTION
       I. - Abstract
@@ -12,15 +12,15 @@ INTRODUCTION
 I. Abstract 
 
 This paper is titled Understanding an HTTP Server through C++ and quite literally I aim to do just that, and what "that" is,
-is to achieve three separate but related goals. The first being that I seek to deepen my software engineering skils through
-designing a scalable and modular HTTP server, hopefully gaining an understanding of backend development and network programming. 
+is to achieve three separate but related goals. The primary motivation is that I seek to deepen my software engineering skils through
+designing a scalable and modular HTTP server, hopefully expanding my understanding of back-end development and network programming. 
 Second, I intend to provide a well-structured guide or tutorial that effectively conveys the fundamental concepts and 
-implementation details of this project, making it accessible to others interested in learning.
-Finally, this project will serve as a proof of concept—a demonstration of both technical skill and practical 
-application—potentially contributing to future opportunities for gainful employment in software development.
+implementation details of this project, making it accessible to others interested in learning (The computer club at temple college).
+Finally, this project will serve as a proof-of-concept a demonstration of both technical skill and practical application.
 
 
 II. What is a Server
+
 
 
 
@@ -33,6 +33,7 @@ IV. How HTTP Works
 
 
 V. Prerequisites & Setup
+
 
 
 -----------------------------------------------------------------------------------------------------------------------------

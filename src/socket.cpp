@@ -1,5 +1,11 @@
+/*
+    Includes/Headers
+*/
 #include "../headers/socket.h"
-
+-----------------------------------------------------------------------------------------------------------------------------
+/*
+    Core Class Functionality
+*/
 Socket::Socket()
 {
     initialize_winsock();
@@ -19,7 +25,10 @@ void Socket::closeSocket(SOCKET sock)
 {
 
 }
-
+-----------------------------------------------------------------------------------------------------------------------------
+/*
+    Helper Functions and Misc
+*/
 void Socket::initialize_winsock() 
 {
     int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
@@ -29,3 +38,4 @@ void Socket::initialize_winsock()
         exit(1);
     }
 }
+-----------------------------------------------------------------------------------------------------------------------------

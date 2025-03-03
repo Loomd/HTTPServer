@@ -7,20 +7,24 @@
 #define PORT 8080
 #define BUFFER_SIZE 1024
 
-void initialize_winsock() {
+void initialize_winsock() 
+{
     WSADATA wsaData;
     int result = WSAStartup(MAKEWORD(2, 2), &wsaData);
-    if (result != 0) {
+    if (result != 0) 
+    {
         std::cerr << "WSAStartup failed: " << result << std::endl;
         exit(1);
     }
 }
 
-int main() {
+int main() 
+{
     initialize_winsock();
 
     SOCKET server_socket = socket(AF_INET, SOCK_STREAM, 0);
-    if (server_socket == INVALID_SOCKET) {
+    if (server_socket == INVALID_SOCKET) 
+    {
         std::cerr << "Socket creation failed: " << WSAGetLastError() << std::endl;
         WSACleanup();
         return 1;
@@ -31,14 +35,16 @@ int main() {
     server_addr.sin_addr.s_addr = INADDR_ANY;
     server_addr.sin_port = htons(PORT);
 
-    if (bind(server_socket, (sockaddr*)&server_addr, sizeof(server_addr)) == SOCKET_ERROR) {
+    if (bind(server_socket, (sockaddr*)&server_addr, sizeof(server_addr)) == SOCKET_ERROR) 
+    {
         std::cerr << "Bind failed: " << WSAGetLastError() << std::endl;
         closesocket(server_socket);
         WSACleanup();
         return 1;
     }
 
-    if (listen(server_socket, SOMAXCONN) == SOCKET_ERROR) {
+    if (listen(server_socket, SOMAXCONN) == SOCKET_ERROR) 
+    {
         std::cerr << "Listen failed: " << WSAGetLastError() << std::endl;
         closesocket(server_socket);
         WSACleanup();
@@ -47,11 +53,13 @@ int main() {
 
     std::cout << "Server listening on port " << PORT << "...\n";
 
-    while (true) {
+    while (true) 
+    {
         sockaddr_in client_addr{};
         int client_len = sizeof(client_addr);
         SOCKET client_socket = accept(server_socket, (sockaddr*)&client_addr, &client_len);
-        if (client_socket == INVALID_SOCKET) {
+        if (client_socket == INVALID_SOCKET) 
+        {
             std::cerr << "Accept failed: " << WSAGetLastError() << std::endl;
             continue;
         }

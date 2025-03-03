@@ -1,9 +1,14 @@
 #include <iostream>
 #include "headers/socket.h"
+//#include "headers/server.h"
+//#include "headers/httpHandler.h"
 
 int main()
 {
-    Socket program_socket = socket(int, int, int);
+    Socket server_socket1;
+
+    SOCKET socket = server_socket1.createSocket();
+
 
     return 0;
 }

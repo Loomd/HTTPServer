@@ -1,39 +1,116 @@
 By: Aaron Hunter
-                                    Understanding an HTTP Server through C++
+
+Understanding an HTTP Server through C++
+
 ------------------------------------------------------------------------------------------------------------------------------
 INTRODUCTION
-      I. - Abstract
-     II. - What is a Server
-    III. - What is a Socket (Windows vs Unix)
-     IV. - How HTTP Works
-      V. - Prerequisites & Setup
+      I. - OVERVIEW
+     II. - WHAT IS A SERVER?
+    III. - WHAT IS A SOCKET?
+     IV. - WHAT IS HTTP?
 ------------------------------------------------------------------------------------------------------------------------------
 
-I. Abstract 
+I. OVERVIEW
 
-This paper is titled Understanding an HTTP Server through C++ and quite literally I aim to do just that, and what "that" is,
-is to achieve three separate but related goals. The primary motivation is that I seek to deepen my software engineering skils through
-designing a scalable and modular HTTP server, hopefully expanding my understanding of back-end development and network programming. 
-Second, I intend to provide a well-structured guide or tutorial that effectively conveys the fundamental concepts and 
-implementation details of this project, making it accessible to others interested in learning (The computer club at temple college).
-Finally, this project will serve as a proof-of-concept a demonstration of both technical skill and practical application.
+------------------------------------------------------------------------------------------------------------------------------
+II. WHAT IS A SERVER?
 
+FUNCTION:
+Servers primarily exist to fulfill requests from other computers, like sending webpages when you browse the internet, delivering emails,
+or accessing stored files.
 
-II. What is a Server
+CLIENT-SERVER MODEL:
+The computer requesting information is called a "client," while the computer providing the information is called a "server."
 
+TYPES:
+Different types of servers include web servers (for websites), mail servers (for emails), database servers (for data storage), file servers
+(for file sharing), and application servers (for running specific applications).
 
+FORM FACTOR:
+A server can be hardware or software, meaning it can be a dedicated physical machine or a software-based service running on a device.
+------------------------------------------------------------------------------------------------------------------------------
+III. WHAT IS A SOCKET?
 
+COMMUNICATION ENDPOINT:
+A socket represents one end of a two-way communication link between applications on a network.
+Imagine a string attached to the base of two plastic cups—the wire itself is the link, and the socket rests
+right at the base.
 
-III. WHat is a Socket
+IP ADDRESS AND PORT NUMBER:
+To uniquely identify a socket, you need both the IP address of the device and the port number on which the application is listening.
+The port number identifies which process is being addressed, while the IP address identifies the network and device of the client or server.
 
+PROTOCOLS:
+Sockets are associated with specific network protocols like TCP (Transmission Control Protocol) or UDP (User Datagram Protocol),
+which define how data is transmitted.
 
+ANALOGY:
+Think of a socket like an electrical outlet on a wall. To plug in a device, you need to match the plug to the socket,
+similar to how an application needs to connect to the correct socket on a server to send and receive data.
 
-IV. How HTTP Works
+FORM FACTOR:
+On Windows, a socket is an object typically managed using the Winsock2 API, which provides functions for creating, binding, and communicating through sockets.
+Sockets in a server are responsible for listening for incoming connections, accepting client requests, and maintaining communication through established connections.
 
+------------------------------------------------------------------------------------------------------------------------------
+IV. WHAT IS HTTP?
 
+HYPERTEXT TRANSFER PROTOCOL:
+HTTP (Hypertext Transfer Protocol) is the foundation of data communication on the web. It is a protocol used for transferring hypertext requests and information between clients and servers.
 
-V. Prerequisites & Setup
+STATLESS PROTOCOL:
+HTTP is stateless, meaning that each request from a client to a server is processed independently, without memory of previous requests. This design makes HTTP simple and scalable but requires additional mechanisms (such as cookies or sessions) for maintaining user state.
 
+REQUEST-RESPONSE MODEL:
+HTTP operates on a request-response model. A client (usually a web browser) sends a request to a server, and the server responds with the requested resource or an error message.
 
+HTTP METHODS:
+Common HTTP methods include:
+- **GET**: Requests a resource from the server.
+- **POST**: Sends data to the server to create or update a resource.
+- **PUT**: Updates an existing resource or creates a new one if it doesn’t exist.
+- **DELETE**: Removes a resource from the server.
+- **HEAD**: Retrieves headers for a resource without the response body.
 
------------------------------------------------------------------------------------------------------------------------------
+STATUS CODES:
+HTTP responses include status codes to indicate the outcome of a request. Some common status codes are:
+- **200 OK**: Request was successful.
+- **404 Not Found**: Requested resource was not found.
+- **500 Internal Server Error**: A server-side error occurred.
+
+SECURE HTTP (HTTPS):
+HTTPS (HTTP Secure) is an extension of HTTP that encrypts data using TLS (Transport Layer Security) to ensure secure 
+communication between clients and servers, preventing eavesdropping and data tampering.
+
+------------------------------------------------------------------------------------------------------------------------------
+V. IMPLEMENTATION OF HTTP IN A SERVER
+
+ABSTRACT IMPLEMENTATION:
+At its core, an HTTP server is an application that listens for incoming HTTP requests, processes those requests, and returns 
+appropriate responses. It follows a structured process:
+1. **Socket Creation and Binding**: The server creates a socket, binds it to a specific IP address and port, and listens for incoming connections.
+2. **Listening and Accepting Connections**: When a client connects, the server accepts the connection and establishes a communication channel.
+3. **Request Parsing**: The server reads the incoming HTTP request, extracting essential components such as the request method (GET, POST, etc.), 
+requested resource, headers, and body.
+4. **Response Generation**: Based on the request, the server generates an appropriate HTTP response, including status codes, headers, and content.
+5. **Sending the Response**: The response is sent back to the client, and the connection is either closed or kept alive based on the HTTP version  
+and headers.
+
+SOCKET'S PURPOSE IN THE SERVER:
+The socket is the gateway for all communication between the client and the server. It serves these primary roles:
+- **Listening Socket**: The server uses a socket to listen for incoming client requests on a specific port.
+- **Connection Handling**: When a client connects, the listening socket creates a new socket dedicated to handling that client’s communication.
+- **Data Transmission**: The socket is responsible for sending and receiving HTTP request and response data between the server and the client.
+
+KEY COMPONENTS OF A BASIC HTTP SERVER:
+- **Listening Socket**: A socket that continuously waits for incoming client connections.
+- **Request Handler**: A module that reads and interprets incoming HTTP requests.
+- **Router**: A mechanism that directs requests to appropriate resources or handlers.
+- **Response Generator**: Constructs HTTP responses based on requested resources.
+- **Logging & Error Handling**: Monitors server activity and manages unexpected errors.
+
+By combining these components, we can effectively implement a basic HTTP server that adheres to the HTTP protocol and efficiently handles
+client requests.
+
+------------------------------------------------------------------------------------------------------------------------------
+
